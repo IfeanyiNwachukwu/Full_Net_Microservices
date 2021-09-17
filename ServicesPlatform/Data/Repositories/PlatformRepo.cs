@@ -22,19 +22,10 @@ namespace ServicesPlatform.Data.Repositories
             _context.Platforms.Add(plat);
         }
 
-        public IEnumerable<Platform> GetAllPlatforms()
-        {
-            return _context.Platforms.ToList()
-        }
+        public IEnumerable<Platform> GetAllPlatforms() => _context.Platforms.ToList();
 
-        public Platform GetPlatformById(int id)
-        {
-            return _context.Platforms.FirstOrDefault(p => p.Id.Equals(id));
-        }
+        public Platform GetPlatformById(int id) => _context.Platforms.FirstOrDefault(p => p.Id.Equals(id));
 
-        public bool SaveChanges()
-        {
-            return (_context.SaveChanges() >= 0);
-        }
+        public bool SaveChanges() => (_context.SaveChanges() >= 0);
     }
 }
