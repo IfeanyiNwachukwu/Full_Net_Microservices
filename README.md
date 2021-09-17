@@ -7,4 +7,5 @@
 -- dotnet add package Microsoft.EntityFrameworkCore.Design
 --  dotnet add package Microsoft.EntityFrameworkCore.InMemory
 -- dotnet add package Microsoft.EntityFrameworkCore.Tools
--- dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+--  dotnet build
+-- dotnet run

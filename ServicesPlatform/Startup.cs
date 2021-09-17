@@ -12,7 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ServicesPlatform.Contracts.RepoContracts;
 using ServicesPlatform.Data;
+using ServicesPlatform.Data.Configuration;
+using ServicesPlatform.Data.Repositories;
 
 namespace ServicesPlatform
 {
@@ -29,6 +32,7 @@ namespace ServicesPlatform
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
+            services.AddScoped<IPlatformRepo,PlatformRepo>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -56,6 +60,7 @@ namespace ServicesPlatform
             {
                 endpoints.MapControllers();
             });
+            PrepDb.PrepPopulation(app);
         }
     }
 }
