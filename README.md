@@ -30,3 +30,6 @@ KUBERNETES
  --  kubectl delete deployment cataloguedash-deployment
  --  kubectl get services
 
+ COMMAND SERVICE
+ -- dotnet new webapi -n ServicesCommands
+
