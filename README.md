@@ -33,3 +33,5 @@ KUBERNETES
  COMMAND SERVICE
  -- dotnet new webapi -n ServicesCommands
 
+ -- code -r \project\ to open a particular project
+
