@@ -16,6 +16,7 @@ using ServicesPlatform.Contracts.RepoContracts;
 using ServicesPlatform.Data;
 using ServicesPlatform.Data.Configuration;
 using ServicesPlatform.Data.Repositories;
+using ServicesPlatform.SyncDataServices.HttpRun;
 
 namespace ServicesPlatform
 {
@@ -33,12 +34,14 @@ namespace ServicesPlatform
         {
             services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
             services.AddScoped<IPlatformRepo,PlatformRepo>();
+            services.AddHttpClient<ICommandDataClient,HttpCommandDataClient>();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServicesPlatform", Version = "v1" });
             });
+            System.Console.WriteLine($"--> CommandService Endpoint {Configuration["CommandService"]}");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
