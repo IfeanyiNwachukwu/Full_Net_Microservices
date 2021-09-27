@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: platform-depl
+  name: commands-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: servicesplatform
+      app: servicescommands
   template:
     metadata:
       labels:
-        app: servicesplatform
+        app: servicescommands
     spec:
       containers:
-      - name: servicesplatform
-        image: wisdomnwachukwu/servicesplatforms:latest
+      - name: servicescommands
+        image: wisdomnwachukwu/servicescommands:latest
         # resources:
         #   limits:
         #     memory: "128Mi"
@@ -26,13 +26,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: platforms-cluster-ip-srv
+  name: commands-cluster-ip-srv
 spec:
   type: ClusterIP
   selector:
-    app: servicesplatform
+    app: servicescommands
   ports:
-  - name: servicesplatform
+  - name: servicescommands
     protocol: TCP
     port: 80
     targetPort: 80

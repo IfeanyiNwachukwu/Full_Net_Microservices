@@ -34,4 +34,21 @@ KUBERNETES
  -- dotnet new webapi -n ServicesCommands
 
  -- code -r \project\ to open a particular project
+ -- kubectl rollout restart deployment platform-depl
+
+ NGINX
+ --https://kubernetes.github.io/ingress-nginx/
+ -- kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.1/deploy/static/provider/cloud/deploy.yaml
+ -- kubectl get namespace
+
+ -- kubectl get pods --namespace=ingress-nginx
+
+ -- kubectl get pvc
+
+
+
+
+ 
+
+
 
