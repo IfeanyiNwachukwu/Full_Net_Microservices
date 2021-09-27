@@ -45,6 +45,8 @@ KUBERNETES
 
  -- kubectl get pvc
 
+ -- kubectl create secret generic mssql--from-literal=SA_PASSWORD="secretPassword"
+
 
 
 
