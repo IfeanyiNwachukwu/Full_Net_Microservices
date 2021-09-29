@@ -47,6 +47,8 @@ KUBERNETES
 
  -- kubectl create secret generic mssql--from-literal=SA_PASSWORD="secretPassword"
 
+ --  dotnet ef migrations add InitialMigration
+
 
 
 
