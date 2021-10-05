@@ -13,8 +13,8 @@
 DOCKER
 --  docker --version  //Check if docker is running
 
--- docker build -t wisdomnwachukwu/serviceplatforms .
--- docker run -p 8080:80 -d wisdomnwachukwu/serviceplatforms 
+-- docker build -t wisdomnwachukwu/servicesplatform .
+-- docker run -p 8080:80 -d wisdomnwachukwu/servicesplatform 
 
 -- docker stop /containerId/
 -- docker start /containerId/
