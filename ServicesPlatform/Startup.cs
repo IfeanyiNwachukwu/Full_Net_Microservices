@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ServicesPlatform.AsyncDataServices;
 using ServicesPlatform.Contracts.RepoContracts;
 using ServicesPlatform.Data;
 using ServicesPlatform.Data.Configuration;
@@ -50,6 +51,7 @@ namespace ServicesPlatform
            
             services.AddScoped<IPlatformRepo,PlatformRepo>();
             services.AddHttpClient<ICommandDataClient,HttpCommandDataClient>();
+            services.AddSingleton<IMessageBusClient,MessageBusClient>();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
