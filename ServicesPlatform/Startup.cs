@@ -36,6 +36,7 @@ namespace ServicesPlatform
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           // services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
             if(_env.IsProduction())
            {
                 System.Console.WriteLine("--> Using SQL Server");
@@ -78,6 +79,7 @@ namespace ServicesPlatform
             {
                 endpoints.MapControllers();
             });
+            //  PrepDb.PrepPopulation(app);
             PrepDb.PrepPopulation(app, _env.IsProduction());
         }
     }

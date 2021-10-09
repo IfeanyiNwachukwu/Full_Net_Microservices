@@ -6,15 +6,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: servicescommands
+      app: servicescommand
   template:
     metadata:
       labels:
-        app: servicescommands
+        app: servicescommand
     spec:
       containers:
-      - name: servicescommands
-        image: wisdomnwachukwu/servicescommands:latest
+      - name: servicescommand
+        image: wisdomnwachukwu/servicesascommands:latest
         # resources:
         #   limits:
         #     memory: "128Mi"
@@ -30,9 +30,9 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: servicescommands
+    app: servicescommand
   ports:
-  - name: servicescommands
+  - name: servicescommand
     protocol: TCP
     port: 80
     targetPort: 80

@@ -26,7 +26,7 @@ KUBERNETES
  --kubectl apply -f platforms-depl.yaml
  --kubectl get deployments
  -- kubectl get pods
-
+-- kubectl rollout restart deployment platform-depl 
  --  kubectl delete deployment cataloguedash-deployment
  --  kubectl get services
 
@@ -48,6 +48,8 @@ KUBERNETES
  -- kubectl create secret generic mssql--from-literal=SA_PASSWORD="secretPassword"
 
  --  dotnet ef migrations add InitialMigration
+
+ --  dotnet add package RabbitMQ.Client
 
 
 

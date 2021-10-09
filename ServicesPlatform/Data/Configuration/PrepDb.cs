@@ -7,6 +7,7 @@ using ServicesPlatform.Models;
 
 namespace ServicesPlatform.Data.Configuration
 {
+    
     public static class PrepDb
     {
         public static void PrepPopulation(IApplicationBuilder app, bool isProd)

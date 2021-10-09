@@ -9,7 +9,7 @@ using ServicesPlatform.Data;
 namespace ServicesPlatform.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210928162708_InitialMigration")]
+    [Migration("20211007010508_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

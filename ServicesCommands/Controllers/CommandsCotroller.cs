@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ServicesCommands.Data.Repositories;
 using ServicesCommands.Dtos.Readonly;
 using ServicesCommands.Dtos.WriteOnly;
+using ServicesCommands.Models;
 
 namespace ServicesCommands.Controllers
 {
@@ -51,10 +52,22 @@ namespace ServicesCommands.Controllers
 
         }
 
-        // [HttpPost]
-        // public ActionResult<CommandDTO> CreateCommandForPlatform(int platformID,CommandDTOW model)
-        // {
-            
-        // }
+        [HttpPost]
+        public ActionResult<CommandDTO> CreateCommandForPlatform(int platformID,CommandDTOW model)
+        {
+            System.Console.WriteLine($"--> Hit CreateCommandForPlatform: {platformID}");
+
+            if(!_repository.PlatformExists(platformID))
+            {
+                return NotFound();
+            }
+            var command = _mapper.Map<Command>(model);
+            _repository.CreateCommand(platformID,command);
+            _repository.SaveChanges();
+
+            var createdCommandTOReturn = _mapper.Map<CommandDTO>(command);
+
+            return CreatedAtRoute(nameof(GetCommandForPlatform),new {platformID = platformID,commandId = createdCommandTOReturn.Id}, createdCommandTOReturn);
+        }
     }
 }
