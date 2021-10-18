@@ -1,6 +1,6 @@
 namespace ServicesCommands.Dtos.Readonly
 {
-    public class GenericEventDTOW
+    public class GenericEventDTO
     {
         public string Event { get; set; }
     }
