@@ -12,8 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ServicesCommands.AsyncDataServices;
 using ServicesCommands.Data;
 using ServicesCommands.Data.Repositories;
+using ServicesCommands.EventProcessing;
 
 namespace ServicesCommands
 {
@@ -32,6 +34,10 @@ namespace ServicesCommands
             services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
             services.AddScoped<ICommandRepo,CommandRepo>();
             services.AddControllers();
+
+            services.AddHostedService<MessageBusSubscriber>();
+            
+         services.AddSingleton<IEventProcessor,EventProcessor>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {

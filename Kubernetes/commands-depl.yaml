@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: servicescommand
-        image: wisdomnwachukwu/servicesascommands:latest
+        image: wisdomnwachukwu/servicescommand:latest
         # resources:
         #   limits:
         #     memory: "128Mi"

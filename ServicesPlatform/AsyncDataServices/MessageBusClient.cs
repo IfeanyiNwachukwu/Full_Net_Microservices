@@ -48,12 +48,12 @@ namespace ServicesPlatform.AsyncDataServices
             var message = JsonSerializer.Serialize(model);
             if(_connection.IsOpen)
             {
-                System.Console.WriteLine("--> RabbitMQ Connection");
+                System.Console.WriteLine("--> RabbitMQ Connection Open, Sendig Message...");
                 SendMessage(message);
             }
             else
             {
-                System.Console.WriteLine("--> RabbitMQ COnnection shutdowm");
+                System.Console.WriteLine("--> RabbitMQ COnnection closed, not sending message");
             }
         }
 
