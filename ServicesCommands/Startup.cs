@@ -13,9 +13,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ServicesCommands.AsyncDataServices;
+using ServicesCommands.AsyncDataServices.Grpc;
 using ServicesCommands.Data;
 using ServicesCommands.Data.Repositories;
 using ServicesCommands.EventProcessing;
+using ServicesCommands.SyncDataServices.Grpc;
 
 namespace ServicesCommands
 {
@@ -37,8 +39,9 @@ namespace ServicesCommands
 
             services.AddHostedService<MessageBusSubscriber>();
             
-         services.AddSingleton<IEventProcessor,EventProcessor>();
+           services.AddSingleton<IEventProcessor,EventProcessor>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<IPlatformDataClient,PlatformDataClient>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServicesCommands", Version = "v1" });
@@ -65,6 +68,8 @@ namespace ServicesCommands
             {
                 endpoints.MapControllers();
             });
+
+            PrepDb.PrepPopulation(app);
         }
     }
 }
