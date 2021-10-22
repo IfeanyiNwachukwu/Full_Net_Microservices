@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,7 @@ using ServicesPlatform.Contracts.RepoContracts;
 using ServicesPlatform.Data;
 using ServicesPlatform.Data.Configuration;
 using ServicesPlatform.Data.Repositories;
+using ServicesPlatform.SyncDataServices.Grpc;
 using ServicesPlatform.SyncDataServices.HttpRun;
 
 namespace ServicesPlatform
@@ -51,6 +54,7 @@ namespace ServicesPlatform
            
             services.AddScoped<IPlatformRepo,PlatformRepo>();
             services.AddHttpClient<ICommandDataClient,HttpCommandDataClient>();
+            services.AddGrpc();
             services.AddSingleton<IMessageBusClient,MessageBusClient>();
             services.AddControllers();
 
@@ -82,6 +86,13 @@ namespace ServicesPlatform
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapGrpcService<GrpcServicesPlatform>();
+
+                // Serves Proto file to client
+                endpoints.MapGet("/Protos/platforms.proto", async context =>
+                {
+                    await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
+                });
             });
             //  PrepDb.PrepPopulation(app);
             PrepDb.PrepPopulation(app, _env.IsProduction());

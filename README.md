@@ -51,6 +51,13 @@ KUBERNETES
 
  --  dotnet add package RabbitMQ.Client
 
+ PLATFORM GRPC
+ -- dotnet add package Grpc.AspNetCore
+
+ COMMAND GRPC
+-- dotnet add package Grpc.Tools
+-- dotnet add package Grpc.Net.Client
+-- Google.Protobuf
 
 
 
