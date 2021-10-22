@@ -26,14 +26,19 @@ namespace ServicesCommands.Data
         {
             System.Console.WriteLine("--> Seeding new Platforms...");
 
-            foreach (var plat in platforms)
+            if(platforms != null)
             {
-                if(!repo.ExternalPlatformExists(plat.ExternalID))
+                foreach (var plat in platforms)
                 {
-                    repo.CreatePlatform(plat);
+                    if(!repo.ExternalPlatformExists(plat.ExternalID))
+                    {
+                        repo.CreatePlatform(plat);
+                    }
+                    repo.SaveChanges();
                 }
-                repo.SaveChanges();
             }
+
+           
         }
     }
 }

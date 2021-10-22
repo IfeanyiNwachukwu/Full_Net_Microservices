@@ -23,7 +23,7 @@ namespace ServicesCommands.AsyncDataServices.Grpc
         {
             Console.WriteLine($"--> Calling Grpc Service {_configuration["GrpcPlatform"]}");
 
-            var channel = GrpcChannel.ForAddress(_configuration["GrpcPlatform"]);
+            var channel = GrpcChannel.ForAddress("http://platforms-cluster-ip-srv:666");
             var client = new GrpcPlatform.GrpcPlatformClient(channel);
             var request = new GetAllRequest();
 

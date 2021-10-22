@@ -29,7 +29,7 @@ namespace ServicesCommands.AsyncDataServices
 
         private void InitializeRabbitMQ()
         {
-            var factory = new ConnectionFactory(){HostName = _configuration["RabbitMQHost"], Port = int.Parse(_configuration["RabbitMQPort"])}; /*int.Parse(_configuration["RabbitMQPort"]*/
+            var factory = new ConnectionFactory(){HostName = "rabbitmq-cluster-ip-srv", Port = 5672}; /*int.Parse(_configuration["RabbitMQPort"]*/
 
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
